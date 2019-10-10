@@ -26,14 +26,14 @@ namespace UrbanDevelopmentProj.Controllers
             request.ContentType = "application/json";
            // request.charset = "UTF - 8";
 
-            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
-            {
-                // Get the response stream
-                StreamReader reader = new StreamReader(response.GetResponseStream());
+            //using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            //{
+            //    // Get the response stream
+            //    StreamReader reader = new StreamReader(response.GetResponseStream());
 
-                // Console application output
-                ViewData["Message"] = reader.ReadToEnd();
-            }
+            //    // Console application output
+            //    ViewData["Message"] = reader.ReadToEnd();
+            //}
 
             return View();
         }
