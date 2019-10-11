@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using UrbanDevelopmentProj.Models;
 using System.IO;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace UrbanDevelopmentProj.Controllers
 {
@@ -24,7 +26,7 @@ namespace UrbanDevelopmentProj.Controllers
             // Set type to POST
             request.Method = "GET";
             request.ContentType = "application/json";
-           // request.charset = "UTF - 8";
+            // request.charset = "UTF - 8";
 
             //using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
             //{
@@ -48,7 +50,7 @@ namespace UrbanDevelopmentProj.Controllers
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
-
+            SendMail();
             return View();
         }
 
@@ -62,5 +64,74 @@ namespace UrbanDevelopmentProj.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public void SendMail()
+        {
+            var isEmailSent = false;
+            try
+            {
+                var email = new EmailDTO
+                {
+                    Subject = "Email Subject : Hello World from the SendGrid",
+                    From = "azure_f05c072837f3f7f832db15bfac048e40@azure.com",
+                    FromName = "Cloud Team",
+                    To = "dalviaarti10@gmail.com",
+                    ToName = "User",
+                    HtmlContent = "<strong>Hello, Email!</strong>",
+                    PlainTextContent = "Hi....This is email body"
+                };
+                SendEmailAsync(email);
+            }
+            catch (Exception ex)
+            {
+                //logger.LogError(ex);  
+            }
+
+        }
+
+        private async System.Threading.Tasks.Task<bool> SendEmailAsync(EmailDTO emailDetails)
+        {
+            try
+            {
+
+                var apiKey = "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";
+                var client = new SendGridClient(apiKey);
+                var msg = new SendGrid.Helpers.Mail.SendGridMessage()
+                {
+                    From = new EmailAddress(emailDetails.From, emailDetails.FromName),
+                    Subject = emailDetails.Subject,
+                    PlainTextContent = emailDetails.PlainTextContent,
+                    HtmlContent = emailDetails.HtmlContent,
+
+                };
+                msg.AddTo(new EmailAddress(emailDetails.To, emailDetails.ToName));
+
+                var bytes = System.IO.File.ReadAllBytes("C:/Attachment.txt");
+                var file = Convert.ToBase64String(bytes);
+                msg.AddAttachment("file.txt", file);
+
+                var response = await client.SendEmailAsync(msg);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                //logger.LogError(ex);  
+                return false;
+            }
+        }
+
+    }
+    public class EmailDTO
+    {
+        public string Subject { get; set; }
+        public string From { get; set; }
+        public string To { get; set; }
+        public string FromName { get; set; }
+        public string ToName { get; set; }
+        public string HtmlContent { get; set; }
+        public string PlainTextContent { get; set; }
+
     }
 }
+

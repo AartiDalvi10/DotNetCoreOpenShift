@@ -57,30 +57,63 @@
     <div class="col-md-10">
         <h2>Select...</h2>
         <div class="table-bordered">
-            <select class="col-md-4" id="Criteria" name="Criteria">
-                <option class="dropdown dropdown-header">Search Criteria...</option>
-                <option class="dropdown dropdown-menu-left">Schools</option>
-                <option class="dropdown dropdown-menu-left">Hospital</option>
-                <option class="dropdown dropdown-menu-left">Park</option>
-                <option class="dropdown dropdown-menu-left">Library</option>
-            </select>
-            <select class="col-md-3" id="Area" name="Area">
-                <option class="dropdown dropdown-header">Select Area...</option>
-                <option class="dropdown dropdown-menu-left">Airoli</option>
-                <option class="dropdown dropdown-menu-left">Thane</option>
-                <option class="dropdown dropdown-menu-left">Mulund</option>
-            </select>
+            <table>
+                <tr>
+                    <td style="width:50%">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Search Criteria
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Schools</a></li>
+                                <li><a href="#">Hospital</a></li>
+                                <li><a href="#">Library</a></li>
+                                <li><a href="#">Park</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                   
+                    <td style="width:50%">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Select Area
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Airoli</a></li>
+                                <li><a href="#">Thane</a></li>
+                                <li><a href="#">Mulund</a></li>
+                                <li><a href="#">Karjat</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            
+
+           
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-md-5">
         <h2>Suggestions</h2>
-        <ul class="table-bordered">
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <div class="container-fluid">
+            <div class="row">
+                <div style="background-color:lightgray;">
+                    <p>
+                        Lorem ipsum...
+                        <button type="button" class="btn btn-default" style="align-self:flex-end">@Html.ActionLink("Send Mail", "Contact", "Home")</button>
+                        
+                    </p>
+                </div>
+                
+                <div class="col-sm-9 col-md-6 col-lg-8" style="background-color:pink;">
+                    <p>Sed ut perspiciatis...</p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-md-5">
         <h2>Maps</h2>
