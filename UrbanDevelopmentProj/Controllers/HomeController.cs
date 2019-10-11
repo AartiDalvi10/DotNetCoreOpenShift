@@ -67,16 +67,16 @@ namespace UrbanDevelopmentProj.Controllers
 
         public void SendMail()
         {
-            var isEmailSent = false;
+           // var isEmailSent = false;
             try
             {
                 var email = new EmailDTO
                 {
                     Subject = "Email Subject : Hello World from the SendGrid",
-                    From = "azure_f05c072837f3f7f832db15bfac048e40@azure.com",
+                    From = "azure_dfec7e7ba12b14ef8b09bb2dcb1e3d87@azure.com",
                     FromName = "Cloud Team",
                     To = "dalviaarti10@gmail.com",
-                    ToName = "User",
+                    ToName = "Aarti",
                     HtmlContent = "<strong>Hello, Email!</strong>",
                     PlainTextContent = "Hi....This is email body"
                 };
@@ -84,7 +84,7 @@ namespace UrbanDevelopmentProj.Controllers
             }
             catch (Exception ex)
             {
-                //logger.LogError(ex);  
+                throw ex;
             }
 
         }
@@ -94,7 +94,7 @@ namespace UrbanDevelopmentProj.Controllers
             try
             {
 
-                var apiKey = "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";
+                var apiKey = "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";
                 var client = new SendGridClient(apiKey);
                 var msg = new SendGrid.Helpers.Mail.SendGridMessage()
                 {
@@ -106,9 +106,9 @@ namespace UrbanDevelopmentProj.Controllers
                 };
                 msg.AddTo(new EmailAddress(emailDetails.To, emailDetails.ToName));
 
-                var bytes = System.IO.File.ReadAllBytes("C:/Attachment.txt");
-                var file = Convert.ToBase64String(bytes);
-                msg.AddAttachment("file.txt", file);
+                //var bytes = System.IO.File.ReadAllBytes("C:/Attachment.txt");
+                //var file = Convert.ToBase64String(bytes);
+                //msg.AddAttachment("file.txt", file);
 
                 var response = await client.SendEmailAsync(msg);
                 return true;
