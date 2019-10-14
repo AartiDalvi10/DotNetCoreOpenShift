@@ -15,9 +15,9 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjxTwmT5uBamNLeDwFPQuH2D06mOXCi0Q"></script>
+    
 </head>
-<body>
+<body style="background-image: @ViewBag.BackgroundImage">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -45,7 +45,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - Urban Development</p>
+            @*<p>&copy; 2019 - Urban Development</p>*@
         </footer>
     </div>
 
