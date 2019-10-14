@@ -140,7 +140,8 @@ namespace UrbanDevelopmentProj.Controllers
                 string searchType = data.searchType;
 
                 shoolDetails schoolData = new shoolDetails();
-                string apiUrl = "http://localhost:8083/getLocationAndSuggestionDetail/?location=" + city + "&searchObject=" + searchType + "";
+                //string apiUrl = "http://localhost:8083/getLocationAndSuggestionDetail/?location=" + city + "&searchObject=" + searchType + "";
+                string apiUrl = "http://newdeploy-amosds-aws-01-syntbots-for-cloud.apps02-london.amosdemo.io/getLocationAndSuggestionDetail/?location=" + city + "&searchObject=" + searchType + "";
                 Uri address = new Uri(apiUrl);
 
                 // Create the web request

@@ -27,6 +27,7 @@
                                 <option value='0' disabled selected>Select</option>
                                 <option value='karjat'>Karjat</option>
                                 <option value='airoli'>Airoli</option>
+                                <option value='kasara'>Kasara</option>
                             </select>
                         </div>
                     </td>
@@ -37,6 +38,7 @@
                                 <option value='0' disabled selected>Select</option>
                                 <option value='hospital'>Hospital</option>
                                 <option value='school'>School</option>
+                                <option value='park'>Park</option>
                             </select>
                         </div>
                     </td>
@@ -146,7 +148,7 @@
                 var jsonData = JSON.stringify(obj);
 
                 
-                alert("city: "+ strLocation + " searchType: "+ value);
+                
                 $.ajax({
                     type: "POST",
                     url: "/Home/getschoolincity",
@@ -156,16 +158,13 @@
 
                         if (data != null) {
                             city = JSON.parse(data.citylonglat);
-                            alert(city.split(","));
+                            
                             var citycordinates = city.split(",");
 
                             var schooldetails = JSON.parse(data.schooldetails);
                             var suggestions = JSON.parse(data.suggestions);
 
-                           // alert(suggestions[0].jsonData);
-                            //alert(suggestions[0].suggestions);
-                           // alert(suggestions[0].value.toString());
-                            //alert(obj[suggestions[0]].value.toString());
+                          
                             if (schooldetails != null)
                             {
                                 
@@ -208,7 +207,7 @@
                                
                                 $.each(suggestions, function (i, item) {
                                     var tr = "<tr scope=\"row\">";
-                                    alert(item);
+                                   
                                     //if (obj[item].value.toString().substring(obj[item].value.toString().indexOf('.'), obj[item].value.toString().length) < 2)
                                     //    obj[item].value += "0";
                                     /* Must not forget the $ sign */
@@ -216,7 +215,7 @@
 
                                     /* We add the table row to the table body */
                                     tbody.innerHTML += tr;
-                                    alert(tbody.innerHTML);
+                                   
                                 })
                                 //for (var item in suggestions) {
                                     
